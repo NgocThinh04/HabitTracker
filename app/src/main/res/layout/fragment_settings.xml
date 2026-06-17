@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:paddingBottom="100dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingVertical="12dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/bg_round_stats"
+                android:backgroundTint="#F0F0F0"
+                android:padding="6dp"
+                android:src="@android:drawable/ic_menu_myplaces"
+                app:tint="#111111" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:text="Edit your name"
+                android:textColor="#111111"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=">"
+                android:textColor="#888888"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EEEEEE" android:layout_marginVertical="8dp"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:paddingVertical="12dp">
+            <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@android:drawable/ic_menu_recent_history" app:tint="#111111" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:text="Time zone" android:textColor="#111111" android:textSize="16sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=">" android:textColor="#888888" android:textSize="20sp" android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:paddingVertical="12dp">
+            <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@android:drawable/ic_menu_gallery" app:tint="#111111" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:text="Customize Widget" android:textColor="#111111" android:textSize="16sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=">" android:textColor="#888888" android:textSize="20sp" android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:paddingVertical="12dp">
+            <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@android:drawable/ic_popup_reminder" app:tint="#111111" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:text="Notifications" android:textColor="#111111" android:textSize="16sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=">" android:textColor="#888888" android:textSize="20sp" android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            android:text="Current Program"
+            android:textColor="#111111"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:paddingVertical="12dp">
+            <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@android:drawable/ic_menu_edit" app:tint="#111111" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:text="Edit program" android:textColor="#111111" android:textSize="16sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=">" android:textColor="#888888" android:textSize="20sp" android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:paddingVertical="12dp">
+            <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@android:drawable/ic_media_pause" app:tint="#111111" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:text="Pause my program" android:textColor="#111111" android:textSize="16sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=">" android:textColor="#888888" android:textSize="20sp" android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
