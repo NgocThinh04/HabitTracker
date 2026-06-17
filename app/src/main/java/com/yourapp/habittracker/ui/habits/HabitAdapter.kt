@@ -6,13 +6,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.yourapp.habittracker.data.Habit
+import com.yourapp.habittracker.data.local.entity.HabitEntity
 import com.yourapp.habittracker.databinding.ItemHabitGamifiedBinding
 
 class HabitAdapter(
-    private val onHabitClick: (Habit) -> Unit,
-    private val onCheckClick: (Habit, Boolean) -> Unit
-) : ListAdapter<Habit, HabitAdapter.HabitViewHolder>(HabitDiffCallback()) {
+    private val onHabitClick: (HabitEntity) -> Unit,
+    private val onCheckClick: (HabitEntity) -> Unit,
+    private val onPartialClick: (HabitEntity) -> Unit,
+    private val onSkipClick: (HabitEntity) -> Unit
+) : ListAdapter<HabitEntity, HabitAdapter.HabitViewHolder>(HabitDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitViewHolder {
         val binding = ItemHabitGamifiedBinding.inflate(
@@ -29,35 +31,33 @@ class HabitAdapter(
         private val binding: ItemHabitGamifiedBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(habit: Habit) {
+        fun bind(habit: HabitEntity) {
             binding.apply {
                 tvHabitTitle.text = habit.name
                 tvXp.text = "✦ +${habit.xpReward}XP"
+                cbHabitCheck.isChecked = false
 
-                cbHabitCheck.setOnCheckedChangeListener(null)
-                cbHabitCheck.isChecked = habit.currentValue >= habit.targetValue
-                cbHabitCheck.setOnCheckedChangeListener { _, isChecked ->
-                    onCheckClick(habit, isChecked)
-                }
-
-                // SỰ KIỆN MỚI: Click vào thẻ để Ẩn/Hiện Menu
+                // Click vào thẻ để ẩn/hiện menu
                 root.setOnClickListener {
-                    if (llActionMenu.visibility == View.VISIBLE) {
-                        llActionMenu.visibility = View.GONE
-                    } else {
-                        llActionMenu.visibility = View.VISIBLE
-                    }
+                    llActionMenu.visibility =
+                        if (llActionMenu.visibility == View.VISIBLE) View.GONE
+                        else View.VISIBLE
                 }
 
-                // Xử lý khi bấm nút Skip
-                btnSkip.setOnClickListener {
-                    // Tạm thời thu gọn menu lại
+                // Checkbox
+                cbHabitCheck.setOnClickListener {
+                    onCheckClick(habit)
+                }
+
+                // Nút Partial
+                btnPartial.setOnClickListener {
+                    onPartialClick(habit)
                     llActionMenu.visibility = View.GONE
                 }
 
-                // Xử lý khi bấm nút Partial
-                btnPartial.setOnClickListener {
-                    // Tạm thời thu gọn menu lại
+                // Nút Skip
+                btnSkip.setOnClickListener {
+                    onSkipClick(habit)
                     llActionMenu.visibility = View.GONE
                 }
             }
@@ -65,12 +65,12 @@ class HabitAdapter(
     }
 }
 
-class HabitDiffCallback : DiffUtil.ItemCallback<Habit>() {
-    override fun areItemsTheSame(oldItem: Habit, newItem: Habit): Boolean {
+class HabitDiffCallback : DiffUtil.ItemCallback<HabitEntity>() {
+    override fun areItemsTheSame(oldItem: HabitEntity, newItem: HabitEntity): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: Habit, newItem: Habit): Boolean {
+    override fun areContentsTheSame(oldItem: HabitEntity, newItem: HabitEntity): Boolean {
         return oldItem == newItem
     }
 }
